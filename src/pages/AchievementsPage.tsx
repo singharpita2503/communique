@@ -94,6 +94,8 @@ function FlipCard({ achiever }: { achiever: Achiever }) {
               src={achiever.image} 
               alt={achiever.name}
               className="w-full h-full object-cover"
+              loading="lazy"
+              decoding="async"
             />
           ) : (
             <div className="w-full h-full bg-gradient-to-br from-slate-700 via-slate-800 to-slate-900 flex flex-col items-center justify-center text-slate-500">
@@ -147,6 +149,8 @@ function AchievementsPage() {
             src={achievementBg} 
             alt="Achievements Background" 
             className="w-full h-full object-cover opacity-30"
+            loading="eager"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-slate-950/60 via-slate-900/70 to-slate-950/80"></div>
         </div>

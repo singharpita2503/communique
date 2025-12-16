@@ -398,6 +398,8 @@ function EventsPage() {
             src={eventBgImage} 
             alt="Events Background" 
             className="w-full h-full object-cover opacity-40"
+            loading="eager"
+            decoding="async"
           />
           <div className="absolute inset-0 bg-gradient-to-br from-slate-950/60 via-slate-900/70 to-slate-950/60"></div>
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-cyan-900/30 via-transparent to-purple-900/30"></div>
@@ -528,6 +530,8 @@ function EventsPage() {
                                       src={event.images[0]} 
                                       alt={`${event.title} - 1`}
                                       className="w-full h-full object-cover"
+                                      loading="lazy"
+                                      decoding="async"
                                     />
                                   ) : (
                                     <div className="absolute inset-0 flex flex-col items-center justify-center text-slate-400 text-center p-3">
@@ -558,6 +562,8 @@ function EventsPage() {
                                       src={event.images[1]} 
                                       alt={`${event.title} - 2`}
                                       className="w-full h-full object-cover"
+                                      loading="lazy"
+                                      decoding="async"
                                     />
                                   ) : (
                                     <div className="absolute inset-0 flex flex-col items-center justify-center text-slate-400 text-center p-3">
@@ -588,6 +594,8 @@ function EventsPage() {
                                       src={event.images[2]} 
                                       alt={`${event.title} - 3`}
                                       className="w-full h-full object-cover"
+                                      loading="lazy"
+                                      decoding="async"
                                     />
                                   ) : (
                                     <div className="absolute inset-0 flex flex-col items-center justify-center text-slate-400 text-center p-3">

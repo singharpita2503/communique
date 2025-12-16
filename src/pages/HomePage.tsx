@@ -159,6 +159,8 @@ function HomePage() {
                           src={image}
                           alt={`Slide ${index + 1}`}
                           className="w-full h-full object-cover"
+                          loading={index === 0 ? "eager" : "lazy"}
+                          decoding="async"
                         />
                         {/* Overlay gradient */}
                         <div className={`absolute inset-0 transition-opacity duration-300 ${
@@ -469,6 +471,8 @@ function HomePage() {
                     src={magazine23} 
                     alt="Communique Third Edition 2023" 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                    decoding="async"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent"></div>
                   <div className="absolute top-4 right-4">
@@ -514,6 +518,8 @@ function HomePage() {
                     src={magazine25} 
                     alt="Communique 2025 Edition" 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                    decoding="async"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent"></div>
                   <div className="absolute top-4 right-4">

@@ -55,6 +55,8 @@ function ContributorsPage() {
                       className="w-full h-full object-cover object-top"
                       whileHover={{ scale: 1.05 }}
                       transition={{ duration: 0.3 }}
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                   {/* Status Badge */}
