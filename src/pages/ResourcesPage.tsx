@@ -185,14 +185,338 @@ function ResourceIcon({ type, className = "w-6 h-6" }: { type: string; className
   return icons[type] || icons.document
 }
 
-// Previous Year Questions Data
-const pyqData: Resource[] = [
-  { id: 1, title: 'Digital Electronics', description: 'PYQs from 2019-2024', iconType: 'chip', tags: ['3rd Sem', '4th Sem'] },
-  { id: 2, title: 'Signals & Systems', description: 'Complete question bank', iconType: 'signal', tags: ['4th Sem'] },
-  { id: 3, title: 'Communication Systems', description: 'Theory + Numericals', iconType: 'antenna', tags: ['5th Sem'] },
-  { id: 4, title: 'Microprocessors', description: '8085/8086 PYQs', iconType: 'cog', tags: ['4th Sem'] },
-  { id: 5, title: 'VLSI Design', description: 'All previous papers', iconType: 'bolt', tags: ['6th Sem'] },
-  { id: 6, title: 'Embedded Systems', description: 'Lab + Theory', iconType: 'desktop', tags: ['7th Sem'] },
+// PYQ Data Structure matching folder organization
+interface PYQSubject {
+  name: string
+  file: string
+}
+
+interface PYQSemester {
+  semester: string
+  subjects: PYQSubject[]
+}
+
+interface PYQSession {
+  session: string
+  semesters: PYQSemester[]
+}
+
+interface PYQCategory {
+  type: string
+  sessions: PYQSession[]
+}
+
+const pyqStructure: PYQCategory[] = [
+  {
+    type: 'REGULAR',
+    sessions: [
+      {
+        session: 'SUMMER-2024',
+        semesters: [
+          {
+            semester: 'THIRD SEM',
+            subjects: [
+              { name: 'Digital System Design', file: 'REGULAR/SUMMER-2024/THIRD SEM/DIGITAL SYSTEM DESIGN.pdf' },
+              { name: 'Electronic Devices', file: 'REGULAR/SUMMER-2024/THIRD SEM/ELECTRONIC DEVICES.pdf' },
+              { name: 'Engineering Mathematics', file: 'REGULAR/SUMMER-2024/THIRD SEM/ENGINEERING MATHEMATICS.pdf' },
+              { name: 'Network Theory', file: 'REGULAR/SUMMER-2024/THIRD SEM/NETWORK THEORY.pdf' },
+              { name: 'Signals and Systems', file: 'REGULAR/SUMMER-2024/THIRD SEM/SIGNALS AND SYSTEMS.pdf' },
+            ]
+          },
+          {
+            semester: 'FOURTH SEM',
+            subjects: [
+              { name: 'Analog and Digital Communication', file: 'REGULAR/SUMMER-2024/FOURTH SEM/ANALOG AND DIGITAL COMMUNICATION.pdf' },
+              { name: 'Analog Circuits', file: 'REGULAR/SUMMER-2024/FOURTH SEM/ANALOG CIRCUITS.pdf' },
+              { name: 'Introduction to Electromagnetic Theory', file: 'REGULAR/SUMMER-2024/FOURTH SEM/INTRODUCTION TO ELECTROMAGNETIC THEORY.pdf' },
+              { name: 'Microprocessors', file: 'REGULAR/SUMMER-2024/FOURTH SEM/MICROPROCESSORS.pdf' },
+              { name: 'Probability Theory and Stochastic Processes', file: 'REGULAR/SUMMER-2024/FOURTH SEM/PROBABILITY THEORY AND STOCHASTIC PROCESSES.pdf' },
+            ]
+          },
+          {
+            semester: 'FIFTH SEM',
+            subjects: [
+              { name: 'Control Systems', file: 'REGULAR/SUMMER-2024/FIFTH SEM/CONTROL SYSTEMS.pdf' },
+              { name: 'Database Management Systems', file: 'REGULAR/SUMMER-2024/FIFTH SEM/DATABASE MANAGEMENT SYSTEMS.pdf' },
+              { name: 'Digital Signal Processing', file: 'REGULAR/SUMMER-2024/FIFTH SEM/DIGITAL SIGNAL PROCESSING.pdf' },
+              { name: 'Electromagnetic Waves', file: 'REGULAR/SUMMER-2024/FIFTH SEM/ELECTROMAGNETIC WAVES.pdf' },
+              { name: 'Microcontrollers and Interfacing', file: 'REGULAR/SUMMER-2024/FIFTH SEM/MICROCONTROLLERS AND INTERFACING.pdf' },
+              { name: 'Smart Sensors', file: 'REGULAR/SUMMER-2024/FIFTH SEM/SMART SENSORS.pdf' },
+              { name: 'Wireless Communication', file: 'REGULAR/SUMMER-2024/FIFTH SEM/WIRELESS COMMUNICATION.pdf' },
+            ]
+          },
+          {
+            semester: 'SIXTH SEM',
+            subjects: [
+              { name: 'Biology for Engineers', file: 'REGULAR/SUMMER-2024/SIXTH SEM/BIOLOGY FOR ENGINEERS.pdf' },
+              { name: 'Biomedical Electronics', file: 'REGULAR/SUMMER-2024/SIXTH SEM/BIOMEDICAL ELECTRONICS.pdf' },
+              { name: 'Computer Architecture', file: 'REGULAR/SUMMER-2024/SIXTH SEM/COMPUTER ARCHITECTURE.pdf' },
+              { name: 'Computer Networks', file: 'REGULAR/SUMMER-2024/SIXTH SEM/COMPUTER NETWORKS.pdf' },
+              { name: 'Introduction to IoT', file: 'REGULAR/SUMMER-2024/SIXTH SEM/INTRODUCTION TO IOT.pdf' },
+              { name: 'Object Oriented Data Structure', file: 'REGULAR/SUMMER-2024/SIXTH SEM/OBJECT ORIENTED DATA STRUCTURE.pdf' },
+            ]
+          },
+          {
+            semester: 'SEVENTH SEM',
+            subjects: [
+              { name: 'Broadband Communication', file: 'REGULAR/SUMMER-2024/SEVENTH SEM/BROADBAND COMMUNICATION.pdf' },
+              { name: 'Digital Image and Video Processing', file: 'REGULAR/SUMMER-2024/SEVENTH SEM/DIGITAL IMAGE AND VIDEO PROCESSING.pdf' },
+              { name: 'Embedded Systems', file: 'REGULAR/SUMMER-2024/SEVENTH SEM/EMBEDDED SYSTEMS.pdf' },
+              { name: 'Engineering Economics', file: 'REGULAR/SUMMER-2024/SEVENTH SEM/ENGINEERING ECONOMICS.pdf' },
+              { name: 'Error Correcting Codes', file: 'REGULAR/SUMMER-2024/SEVENTH SEM/ERROR CORRECTING CODES.pdf' },
+              { name: 'Long Term Evolution Technologies', file: 'REGULAR/SUMMER-2024/SEVENTH SEM/LONG TERM EVOLUTION TECHNOLOGIES.pdf' },
+              { name: 'Machine Learning', file: 'REGULAR/SUMMER-2024/SEVENTH SEM/MACHINE LEARNING.pdf' },
+              { name: 'Microwave Theory and Techniques', file: 'REGULAR/SUMMER-2024/SEVENTH SEM/MICROWAVE THEORY AND TECHNIQUES.pdf' },
+              { name: 'Optical Fiber Communication', file: 'REGULAR/SUMMER-2024/SEVENTH SEM/OPTICAL FIBER COMMUNICATION.pdf' },
+              { name: 'Wireless Sensor Network', file: 'REGULAR/SUMMER-2024/SEVENTH SEM/WIRELESS SENSOR NETWORK.pdf' },
+            ]
+          },
+          {
+            semester: 'EIGHTH SEM',
+            subjects: [
+              { name: 'Antenna Theory', file: 'REGULAR/SUMMER-2024/EIGHTH SEM/ANTENNA THEORY.pdf' },
+              { name: 'Computer Vision', file: 'REGULAR/SUMMER-2024/EIGHTH SEM/COMPUTER VISION.pdf' },
+              { name: 'Evolution of Air Interface Towards 5G', file: 'REGULAR/SUMMER-2024/EIGHTH SEM/EVOLUTION OF AIR INTERFACE TOWARDS 5G.pdf' },
+              { name: 'Real Time Operating Systems and Kernels', file: 'REGULAR/SUMMER-2024/EIGHTH SEM/REAL TIME OPERATING SYSTEMS AND KERNELS.pdf' },
+            ]
+          },
+        ]
+      },
+      {
+        session: 'WINTER-2024',
+        semesters: [
+          {
+            semester: 'FOURTH SEMESTER',
+            subjects: [
+              { name: 'Analog and Digital Communication', file: 'REGULAR/WINTER -2024/FOURTH SEMESTER/ANALOG AND DIGITAL COMMUNICATION.pdf' },
+              { name: 'Analog Circuits', file: 'REGULAR/WINTER -2024/FOURTH SEMESTER/ANALOG CIRCUITS.pdf' },
+              { name: 'Introduction to Electromagnetic Theory', file: 'REGULAR/WINTER -2024/FOURTH SEMESTER/INTRODUCTION TO ELECTROMAGNETIC THEORY.pdf' },
+              { name: 'Microprocessors', file: 'REGULAR/WINTER -2024/FOURTH SEMESTER/MICROPROCESSORS.pdf' },
+              { name: 'Probability Theory and Stochastic Processes', file: 'REGULAR/WINTER -2024/FOURTH SEMESTER/PROBABILITY THEORY AND STOCHASTIC PROCESSES.pdf' },
+            ]
+          },
+          {
+            semester: 'SIXTH SEMESTER',
+            subjects: [
+              { name: 'Biology for Engineers', file: 'REGULAR/WINTER -2024/SIXTH SEMESTER/BIOLOGY FOR ENGINEERS.pdf' },
+              { name: 'Biomedical Electronics', file: 'REGULAR/WINTER -2024/SIXTH SEMESTER/BIOMEDICAL ELECTRONICS.pdf' },
+              { name: 'Computer Architecture', file: 'REGULAR/WINTER -2024/SIXTH SEMESTER/COMPUTER ARCHITECTURE.pdf' },
+              { name: 'Computer Networks', file: 'REGULAR/WINTER -2024/SIXTH SEMESTER/COMPUTER NETWORKS.pdf' },
+              { name: 'Introduction to Internet of Things', file: 'REGULAR/WINTER -2024/SIXTH SEMESTER/INTRODUCTION TO INTERNET OF THINGS.pdf' },
+              { name: 'Object Oriented Data Structure', file: 'REGULAR/WINTER -2024/SIXTH SEMESTER/OBJECT ORIENTED DATA STRUCTURE.pdf' },
+            ]
+          },
+          {
+            semester: 'EIGHTH SEMESTER',
+            subjects: [
+              { name: 'Antenna Theory', file: 'REGULAR/WINTER -2024/EIGHTH SEMESTER/ANTENNA THEORY.pdf' },
+              { name: 'Computer Vision', file: 'REGULAR/WINTER -2024/EIGHTH SEMESTER/COMPUTER VISION.pdf' },
+              { name: 'Real Time Operating Systems and Kernels', file: 'REGULAR/WINTER -2024/EIGHTH SEMESTER/REAL TIME OPERATING SYSTEMS AND KERNELS.pdf' },
+            ]
+          },
+        ]
+      },
+      {
+        session: 'SUMMER-2023',
+        semesters: [
+          {
+            semester: 'Fourth Sem',
+            subjects: [
+              { name: 'Analog and Digital Communication', file: 'REGULAR/SUMMER-2023/Fourth Sem/ANALOG AND DIGITAL COMMUNICATION.pdf' },
+              { name: 'Analog Circuits', file: 'REGULAR/SUMMER-2023/Fourth Sem/ANALOG CIRCUITS.pdf' },
+              { name: 'Introduction to Electromagnetic Theory', file: 'REGULAR/SUMMER-2023/Fourth Sem/INTRODUCTION TO ELECTROMAGNETIC THEORY.pdf' },
+              { name: 'Microprocessors', file: 'REGULAR/SUMMER-2023/Fourth Sem/MICROPROCESSORS.pdf' },
+              { name: 'Probability Theory and Stochastic Processes', file: 'REGULAR/SUMMER-2023/Fourth Sem/PROBABILITY THEORY AND STOCHASTIC PROCESSES.pdf' },
+            ]
+          },
+          {
+            semester: 'Sixth Semester',
+            subjects: [
+              { name: 'Biology for Engineers', file: 'REGULAR/SUMMER-2023/Sixth Semester/BIOLOGY FOR ENGINEERS.pdf' },
+              { name: 'Biomedical Electronics', file: 'REGULAR/SUMMER-2023/Sixth Semester/BIOMEDICAL ELECTRONICS.pdf' },
+              { name: 'Computer Architecture', file: 'REGULAR/SUMMER-2023/Sixth Semester/COMPUTER ARCHITECTURE.pdf' },
+              { name: 'Computer Networks', file: 'REGULAR/SUMMER-2023/Sixth Semester/COMPUTER NETWORKS.pdf' },
+              { name: 'Introduction to Internet of Things', file: 'REGULAR/SUMMER-2023/Sixth Semester/INTRODUCTION TO INTERNET OF THINGS.pdf' },
+              { name: 'Introduction to MEMS', file: 'REGULAR/SUMMER-2023/Sixth Semester/INTRODUCTION TO MEMS.pdf' },
+              { name: 'Multimedia Networks', file: 'REGULAR/SUMMER-2023/Sixth Semester/MULTIMEDIA NETWORKS.pdf' },
+              { name: 'Object Oriented Data Structure', file: 'REGULAR/SUMMER-2023/Sixth Semester/OBJECT ORIENTED DATA STRUCTURE.pdf' },
+            ]
+          },
+          {
+            semester: 'Eight Semester',
+            subjects: [
+              { name: 'Antenna Theory', file: 'REGULAR/SUMMER-2023/Eight Semester/ANTENNA THEORY.pdf' },
+              { name: 'Real Time Operating Systems and Kernels', file: 'REGULAR/SUMMER-2023/Eight Semester/REAL TIME OPERATING SYSTEMS AND KERNELS.pdf' },
+            ]
+          },
+        ]
+      },
+      {
+        session: 'WINTER-2023',
+        semesters: [
+          {
+            semester: 'Third Sem',
+            subjects: [
+              { name: 'Digital System Design', file: 'REGULAR/WINTER-2023/Third Sem/DIGITAL SYSTEM DESIGN.pdf' },
+              { name: 'Engineering Mathematics', file: 'REGULAR/WINTER-2023/Third Sem/ENGINEERING MATHEMATICS.pdf' },
+              { name: 'Signals and Systems', file: 'REGULAR/WINTER-2023/Third Sem/SIGNALS AND SYSTEMS.pdf' },
+            ]
+          },
+          {
+            semester: 'Fifth Sem',
+            subjects: [
+              { name: 'Control Systems', file: 'REGULAR/WINTER-2023/Fifth Sem/CONTROL SYSTEMS.pdf' },
+              { name: 'Database Management Systems', file: 'REGULAR/WINTER-2023/Fifth Sem/DATABASE MANAGEMENT SYSTEMS.pdf' },
+              { name: 'Digital Signal Processing', file: 'REGULAR/WINTER-2023/Fifth Sem/DIGITAL SIGNAL PROCESSING.pdf' },
+              { name: 'Electromagnetic Waves', file: 'REGULAR/WINTER-2023/Fifth Sem/ELECTROMAGNETIC WAVES.pdf' },
+              { name: 'Microcontrollers and Interfacing', file: 'REGULAR/WINTER-2023/Fifth Sem/MICROCONTROLLERS AND INTERFACING.pdf' },
+              { name: 'Smart Sensors', file: 'REGULAR/WINTER-2023/Fifth Sem/SMART SENSORS.pdf' },
+              { name: 'Wireless Communication', file: 'REGULAR/WINTER-2023/Fifth Sem/WIRELESS COMMUNICATION.pdf' },
+            ]
+          },
+          {
+            semester: 'Seventh Sem',
+            subjects: [
+              { name: 'Broadband Communication', file: 'REGULAR/WINTER-2023/Seventh Sem/BROADBAND COMMUNICATION.pdf' },
+              { name: 'Digital Image and Video Processing', file: 'REGULAR/WINTER-2023/Seventh Sem/DIGITAL IMAGE AND VIDEO PROCESSING.pdf' },
+              { name: 'Embedded Systems', file: 'REGULAR/WINTER-2023/Seventh Sem/EMBEDDED SYSTEMS.pdf' },
+              { name: 'Engineering Economics', file: 'REGULAR/WINTER-2023/Seventh Sem/ENGINEERING ECONOMICS.pdf' },
+              { name: 'Error Correcting Codes', file: 'REGULAR/WINTER-2023/Seventh Sem/ERROR CORRECTING CODES.pdf' },
+              { name: 'Long Term Evolution Technologies', file: 'REGULAR/WINTER-2023/Seventh Sem/LONG TERM EVOLUTION TECHNOLOGIES.pdf' },
+              { name: 'Machine Learning', file: 'REGULAR/WINTER-2023/Seventh Sem/MACHINE LEARNING.pdf' },
+              { name: 'Microwave Theory and Techniques', file: 'REGULAR/WINTER-2023/Seventh Sem/MICROWAVE THEORY AND TECHNIQUES.pdf' },
+              { name: 'Optical Fiber Communication', file: 'REGULAR/WINTER-2023/Seventh Sem/OPTICAL FIBER COMMUNICATION.pdf' },
+              { name: 'Wireless Sensor Network', file: 'REGULAR/WINTER-2023/Seventh Sem/WIRELESS SENSOR NETWORK.pdf' },
+            ]
+          },
+        ]
+      },
+    ]
+  },
+  {
+    type: 'MAKE_UP',
+    sessions: [
+      {
+        session: 'SUMMER 2024',
+        semesters: [
+          {
+            semester: 'FOURTH SEMESTER',
+            subjects: [
+              { name: 'Analog and Digital Communication', file: 'MAKE_UP/SUMMER 2024/FOURTH SEMESTER/ANALOG AND DIGITAL COMMUNICATION.pdf' },
+              { name: 'Analog Circuits', file: 'MAKE_UP/SUMMER 2024/FOURTH SEMESTER/ANALOG CIRCUITS.pdf' },
+              { name: 'Introduction to Electromagnetic Theory', file: 'MAKE_UP/SUMMER 2024/FOURTH SEMESTER/INTRODUCTION TO ELECTROMAGNETIC THEORY.pdf' },
+              { name: 'Microprocessors', file: 'MAKE_UP/SUMMER 2024/FOURTH SEMESTER/MICROPROCESSORS.pdf' },
+              { name: 'Probability Theory and Stochastic Processes', file: 'MAKE_UP/SUMMER 2024/FOURTH SEMESTER/PROBABILITY THEORY AND STOCHASTIC PROCESSES.pdf' },
+            ]
+          },
+          {
+            semester: 'SIXTH SEMESTER',
+            subjects: [
+              { name: 'Biology for Engineers', file: 'MAKE_UP/SUMMER 2024/SIXTH SEMESTER/BIOLOGY FOR ENGINEERS.pdf' },
+              { name: 'Biomedical Electronics', file: 'MAKE_UP/SUMMER 2024/SIXTH SEMESTER/BIOMEDICAL ELECTRONICS.pdf' },
+              { name: 'Computer Architecture', file: 'MAKE_UP/SUMMER 2024/SIXTH SEMESTER/COMPUTER ARCHITECTURE.pdf' },
+              { name: 'Computer Networks', file: 'MAKE_UP/SUMMER 2024/SIXTH SEMESTER/COMPUTER NETWORKS.pdf' },
+              { name: 'Introduction to Internet of Things', file: 'MAKE_UP/SUMMER 2024/SIXTH SEMESTER/INTRODUCTION TO INTERNET OF THINGS.pdf' },
+              { name: 'Object Oriented Data Structure', file: 'MAKE_UP/SUMMER 2024/SIXTH SEMESTER/OBJECT ORIENTED DATA STRUCTURE.pdf' },
+            ]
+          },
+        ]
+      },
+      {
+        session: 'WINTER-2024',
+        semesters: [
+          {
+            semester: 'THIRD SEMESTER',
+            subjects: [
+              { name: 'Analog Circuits Design', file: 'MAKE_UP/WINTER - 2024/THIRD SEMESTER/ANALOG CIRCUITS DESIGN.pdf' },
+              { name: 'Applied Mathematics-III', file: 'MAKE_UP/WINTER - 2024/THIRD SEMESTER/APPLIED MATHEMATICS–III.pdf' },
+              { name: 'Digital System Design with HDL', file: 'MAKE_UP/WINTER - 2024/THIRD SEMESTER/DIGITAL SYSTEM DESIGN WITH HDL.pdf' },
+              { name: 'Electronic Circuits', file: 'MAKE_UP/WINTER - 2024/THIRD SEMESTER/ELECTRONIC CIRCUITS.pdf' },
+              { name: 'Environmental Science', file: 'MAKE_UP/WINTER - 2024/THIRD SEMESTER/ENVIRONMENTAL SCIENCE.pdf' },
+              { name: 'Signals and Systems', file: 'MAKE_UP/WINTER - 2024/THIRD SEMESTER/SIGNALS AND SYSTEMS.pdf' },
+            ]
+          },
+          {
+            semester: 'FIFTH SEMESTER',
+            subjects: [
+              { name: 'Control Systems', file: 'MAKE_UP/WINTER - 2024/FIFTH SEMESTER/CONTROL SYSTEMS.pdf' },
+              { name: 'Database Management Systems', file: 'MAKE_UP/WINTER - 2024/FIFTH SEMESTER/DATABASE MANAGEMENT SYSTEMS.pdf' },
+              { name: 'Digital Signal Processing', file: 'MAKE_UP/WINTER - 2024/FIFTH SEMESTER/DIGITAL SIGNAL PROCESSING.pdf' },
+              { name: 'Electromagnetic Waves', file: 'MAKE_UP/WINTER - 2024/FIFTH SEMESTER/ELECTROMAGNETIC WAVES.pdf' },
+              { name: 'Microcontrollers and Interfacing', file: 'MAKE_UP/WINTER - 2024/FIFTH SEMESTER/MICROCONTROLLERS AND INTERFACING.pdf' },
+              { name: 'Smart Sensors', file: 'MAKE_UP/WINTER - 2024/FIFTH SEMESTER/SMART SENSORS.pdf' },
+              { name: 'Wireless Communication', file: 'MAKE_UP/WINTER - 2024/FIFTH SEMESTER/WIRELESS COMMUNICATION.pdf' },
+            ]
+          },
+          {
+            semester: 'SEVENTH SEMESTER',
+            subjects: [
+              { name: 'Broadband Communication', file: 'MAKE_UP/WINTER - 2024/SEVENTH SEMESTER/BROADBAND  COMMUNICATION.pdf' },
+              { name: 'Digital Image and Video Processing', file: 'MAKE_UP/WINTER - 2024/SEVENTH SEMESTER/DIGITAL IMAGE AND VIDEO PROCESSING.pdf' },
+              { name: 'Embedded Systems', file: 'MAKE_UP/WINTER - 2024/SEVENTH SEMESTER/EMBEDDED SYSTEMS.pdf' },
+              { name: 'Engineering Economics', file: 'MAKE_UP/WINTER - 2024/SEVENTH SEMESTER/ENGINEERING ECONOMICS.pdf' },
+              { name: 'Error Correcting Codes', file: 'MAKE_UP/WINTER - 2024/SEVENTH SEMESTER/ERROR CORRECTING CODES.pdf' },
+              { name: 'Machine Learning', file: 'MAKE_UP/WINTER - 2024/SEVENTH SEMESTER/MACHINE LEARNING.pdf' },
+              { name: 'Microwave Theory and Techniques', file: 'MAKE_UP/WINTER - 2024/SEVENTH SEMESTER/MICROWAVE THEORY AND TECHNIQUES.pdf' },
+              { name: 'Optical Fiber Communication', file: 'MAKE_UP/WINTER - 2024/SEVENTH SEMESTER/OPTICAL FIBER COMMUNICATION.pdf' },
+            ]
+          },
+        ]
+      },
+      {
+        session: 'SUMMER-2023',
+        semesters: [
+          {
+            semester: 'Fourth Sem ms23',
+            subjects: [
+              { name: 'Analog and Digital Communication', file: 'MAKE_UP/SUMMER-2023/Fourth Sem ms23/ANALOG AND DIGITAL COMMUNICATION.pdf' },
+              { name: 'Analog Circuits', file: 'MAKE_UP/SUMMER-2023/Fourth Sem ms23/ANALOG CIRCUITS.pdf' },
+              { name: 'Introduction to Electromagnetic Theory', file: 'MAKE_UP/SUMMER-2023/Fourth Sem ms23/INTRODUCTION TO ELECTROMAGNETIC THEORY.pdf' },
+              { name: 'Microprocessors', file: 'MAKE_UP/SUMMER-2023/Fourth Sem ms23/MICROPROCESSORS.pdf' },
+              { name: 'Probability Theory and Stochastic Processes', file: 'MAKE_UP/SUMMER-2023/Fourth Sem ms23/PROBABILITY THEORY AND STOCHASTIC PROCESSES.pdf' },
+            ]
+          },
+          {
+            semester: 'Sixth semester',
+            subjects: [
+              { name: 'Biology for Engineers', file: 'MAKE_UP/SUMMER-2023/Sixth semester/BIOLOGY FOR ENGINEERS.pdf' },
+              { name: 'Biomedical Electronics', file: 'MAKE_UP/SUMMER-2023/Sixth semester/BIOMEDICAL ELECTRONICS.pdf' },
+              { name: 'Computer Architecture', file: 'MAKE_UP/SUMMER-2023/Sixth semester/COMPUTER ARCHITECTURE.pdf' },
+              { name: 'Computer Networks', file: 'MAKE_UP/SUMMER-2023/Sixth semester/COMPUTER NETWORKS.pdf' },
+              { name: 'Introduction to IoT', file: 'MAKE_UP/SUMMER-2023/Sixth semester/INTRODUCTION TO IOT.pdf' },
+              { name: 'Introduction to MEMS', file: 'MAKE_UP/SUMMER-2023/Sixth semester/INTRODUCTION TO MEMS.pdf' },
+              { name: 'Multimedia Networks', file: 'MAKE_UP/SUMMER-2023/Sixth semester/MULTIMEDIA NETWORKS.pdf' },
+              { name: 'Object Oriented Data Structure', file: 'MAKE_UP/SUMMER-2023/Sixth semester/OBJECT ORIENTED DATA STRUCTURE.pdf' },
+            ]
+          },
+        ]
+      },
+      {
+        session: 'WINTER-2023',
+        semesters: [
+          {
+            semester: 'Third Sem mw23',
+            subjects: [
+              { name: 'Engineering Mathematics', file: 'MAKE_UP/WINTER-2023/Third Sem mw23/ENGINEERING MATHEMATICS.pdf' },
+              { name: 'Network Theory', file: 'MAKE_UP/WINTER-2023/Third Sem mw23/NETWORK THEORY.pdf' },
+            ]
+          },
+          {
+            semester: 'Fifth Sem mw23',
+            subjects: [
+              { name: 'Control Systems', file: 'MAKE_UP/WINTER-2023/Fifth Sem mw23/CONTROL SYSTEMS.pdf' },
+              { name: 'Database Management System', file: 'MAKE_UP/WINTER-2023/Fifth Sem mw23/DATABASE MANAGEMENT SYSTEM.pdf' },
+              { name: 'Digital Signal Processing', file: 'MAKE_UP/WINTER-2023/Fifth Sem mw23/DIGITAL SIGNAL PROCESSING.pdf' },
+              { name: 'Electromagnetic Waves', file: 'MAKE_UP/WINTER-2023/Fifth Sem mw23/ELECTROMAGNETIC WAVES.pdf' },
+              { name: 'Microcontrollers and Interfacing', file: 'MAKE_UP/WINTER-2023/Fifth Sem mw23/MICROCONTROLLERS AND INTERFACING.pdf' },
+              { name: 'Smart Sensors', file: 'MAKE_UP/WINTER-2023/Fifth Sem mw23/SMART SENSORS.pdf' },
+              { name: 'Wireless Communication', file: 'MAKE_UP/WINTER-2023/Fifth Sem mw23/WIRELESS COMMUNICATION.pdf' },
+            ]
+          },
+        ]
+      },
+    ]
+  },
 ]
 
 // Courses Data
@@ -347,6 +671,186 @@ function ResourceSection({
   )
 }
 
+// PYQ Section Component with expandable structure
+function PYQSection() {
+  const [expandedCategory, setExpandedCategory] = useState<string | null>('REGULAR')
+  const [expandedSession, setExpandedSession] = useState<string | null>(null)
+  const [expandedSemester, setExpandedSemester] = useState<string | null>(null)
+
+  const handleDownload = (filePath: string) => {
+    // PDFs are served from public/Communique_Last_Two_Years folder
+    const pdfUrl = `/Communique_Last_Two_Years/${filePath}`
+    window.open(pdfUrl, '_blank')
+  }
+
+  return (
+    <div className="space-y-6">
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        className="flex items-center gap-4 mb-8"
+      >
+        <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-cyan-500 to-cyan-600 flex items-center justify-center text-white shadow-lg">
+          <ResourceIcon type="book" className="w-7 h-7" />
+        </div>
+        <div>
+          <h2 className="text-2xl font-bold text-white">Previous Year Questions</h2>
+          <p className="text-slate-400">Comprehensive collection of exam papers (2023-2024)</p>
+        </div>
+      </motion.div>
+
+      {pyqStructure.map((category, catIdx) => (
+        <motion.div
+          key={category.type}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: catIdx * 0.1 }}
+          className="bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700/50 overflow-hidden"
+        >
+          {/* Category Header */}
+          <button
+            onClick={() => setExpandedCategory(expandedCategory === category.type ? null : category.type)}
+            className="w-full px-6 py-4 flex items-center justify-between hover:bg-slate-700/30 transition-colors"
+          >
+            <div className="flex items-center gap-3">
+              <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${
+                category.type === 'REGULAR' 
+                  ? 'bg-gradient-to-br from-cyan-500/20 to-cyan-600/20 text-cyan-400'
+                  : 'bg-gradient-to-br from-orange-500/20 to-orange-600/20 text-orange-400'
+              }`}>
+                <ResourceIcon type={category.type === 'REGULAR' ? 'academic' : 'clipboard'} className="w-5 h-5" />
+              </div>
+              <div className="text-left">
+                <h3 className="text-lg font-semibold text-white">{category.type} EXAMS</h3>
+                <p className="text-sm text-slate-400">{category.sessions.length} sessions available</p>
+              </div>
+            </div>
+            <motion.div
+              animate={{ rotate: expandedCategory === category.type ? 180 : 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              </svg>
+            </motion.div>
+          </button>
+
+          {/* Sessions */}
+          {expandedCategory === category.type && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              className="px-4 pb-4"
+            >
+              {category.sessions.map((session, sessIdx) => (
+                <div key={session.session} className="mt-2">
+                  <button
+                    onClick={() => setExpandedSession(expandedSession === `${category.type}-${session.session}` ? null : `${category.type}-${session.session}`)}
+                    className="w-full px-4 py-3 flex items-center justify-between bg-slate-700/30 hover:bg-slate-700/50 rounded-xl transition-colors"
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-slate-600/50 flex items-center justify-center text-slate-300">
+                        <ResourceIcon type="folder" className="w-4 h-4" />
+                      </div>
+                      <span className="font-medium text-white">{session.session}</span>
+                      <span className="text-xs px-2 py-1 bg-slate-600/50 rounded-full text-slate-300">
+                        {session.semesters.length} semesters
+                      </span>
+                    </div>
+                    <motion.div
+                      animate={{ rotate: expandedSession === `${category.type}-${session.session}` ? 180 : 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </motion.div>
+                  </button>
+
+                  {/* Semesters */}
+                  {expandedSession === `${category.type}-${session.session}` && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      className="ml-4 mt-2 space-y-2"
+                    >
+                      {session.semesters.map((semester, semIdx) => (
+                        <div key={semester.semester} className="bg-slate-800/50 rounded-xl overflow-hidden">
+                          <button
+                            onClick={() => setExpandedSemester(expandedSemester === `${category.type}-${session.session}-${semester.semester}` ? null : `${category.type}-${session.session}-${semester.semester}`)}
+                            className="w-full px-4 py-3 flex items-center justify-between hover:bg-slate-700/30 transition-colors"
+                          >
+                            <div className="flex items-center gap-3">
+                              <div className="w-7 h-7 rounded-lg bg-cyan-500/20 flex items-center justify-center text-cyan-400">
+                                <span className="text-xs font-bold">{semIdx + 1}</span>
+                              </div>
+                              <span className="text-sm font-medium text-slate-200">{semester.semester}</span>
+                              <span className="text-xs text-slate-400">
+                                {semester.subjects.length} papers
+                              </span>
+                            </div>
+                            <motion.div
+                              animate={{ rotate: expandedSemester === `${category.type}-${session.session}-${semester.semester}` ? 180 : 0 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              <svg className="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                              </svg>
+                            </motion.div>
+                          </button>
+
+                          {/* Subjects */}
+                          {expandedSemester === `${category.type}-${session.session}-${semester.semester}` && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: 'auto', opacity: 1 }}
+                              className="px-4 pb-3"
+                            >
+                              <div className="grid gap-2">
+                                {semester.subjects.map((subject, subIdx) => (
+                                  <motion.button
+                                    key={subject.name}
+                                    initial={{ opacity: 0, x: -10 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    transition={{ delay: subIdx * 0.05 }}
+                                    onClick={() => handleDownload(subject.file)}
+                                    className="w-full px-4 py-2.5 flex items-center justify-between bg-slate-700/30 hover:bg-cyan-500/20 rounded-lg transition-all group cursor-pointer"
+                                  >
+                                    <div className="flex items-center gap-3">
+                                      <div className="w-6 h-6 rounded bg-red-500/20 flex items-center justify-center">
+                                        <svg className="w-3.5 h-3.5 text-red-400" fill="currentColor" viewBox="0 0 24 24">
+                                          <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
+                                        </svg>
+                                      </div>
+                                      <span className="text-sm text-slate-300 group-hover:text-cyan-400 transition-colors text-left">
+                                        {subject.name}
+                                      </span>
+                                    </div>
+                                    <svg className="w-4 h-4 text-slate-500 group-hover:text-cyan-400 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                    </svg>
+                                  </motion.button>
+                                ))}
+                              </div>
+                            </motion.div>
+                          )}
+                        </div>
+                      ))}
+                    </motion.div>
+                  )}
+                </div>
+              ))}
+            </motion.div>
+          )}
+        </motion.div>
+      ))}
+    </div>
+  )
+}
+
 function ResourcesPage() {
   const [activeTab, setActiveTab] = useState('academic')
 
@@ -445,14 +949,7 @@ function ResourcesPage() {
             transition={{ duration: 0.3 }}
           >
             {activeTab === 'academic' && (
-              <ResourceSection
-                title="Previous Year Questions"
-                subtitle="Comprehensive collection of exam papers"
-                resources={pyqData}
-                color="cyan"
-                iconType="book"
-                gradient="from-cyan-500 to-cyan-600"
-              />
+              <PYQSection />
             )}
 
             {activeTab === 'courses' && (
