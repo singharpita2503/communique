@@ -745,7 +745,7 @@ function PYQSection() {
               exit={{ height: 0, opacity: 0 }}
               className="px-4 pb-4"
             >
-              {category.sessions.map((session, sessIdx) => (
+              {category.sessions.map((session) => (
                 <div key={session.session} className="mt-2">
                   <button
                     onClick={() => setExpandedSession(expandedSession === `${category.type}-${session.session}` ? null : `${category.type}-${session.session}`)}
