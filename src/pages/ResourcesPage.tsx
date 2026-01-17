@@ -1078,28 +1078,6 @@ function ResourcesPage() {
             )}
           </motion.div>
 
-          {/* CTA Section */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-20 text-center"
-          >
-            <div className="bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-pink-500/10 rounded-2xl p-8 border border-cyan-500/20">
-              <div className="flex items-center justify-center gap-3 mb-4">
-                <div className="w-10 h-10 rounded-lg bg-cyan-500/20 flex items-center justify-center text-cyan-400">
-                  <ResourceIcon type="sparkles" className="w-6 h-6" />
-                </div>
-                <h3 className="text-2xl font-bold text-white">Have Resources to Share?</h3>
-              </div>
-              <p className="text-slate-400 mb-6 max-w-2xl mx-auto">
-                Help your fellow students by contributing study materials, notes, or project ideas to our resource library
-              </p>
-              <button className="bg-gradient-to-r from-cyan-500 to-purple-600 text-white px-8 py-3 rounded-xl hover:from-cyan-600 hover:to-purple-700 transition-all transform hover:scale-105 shadow-lg shadow-cyan-500/30 font-semibold">
-                Contribute Resources
-              </button>
-            </div>
-          </motion.div>
         </div>
       </section>
     </div>

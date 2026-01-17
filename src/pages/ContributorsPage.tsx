@@ -100,7 +100,9 @@ function ContributorsPage() {
                   {/* Social Links */}
                   <div className="flex justify-center md:justify-start gap-3">
                     <motion.a
-                      href="#"
+                      href="https://www.linkedin.com/in/arpita-singh-870009241/"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       whileHover={{ scale: 1.1 }}
                       className="w-10 h-10 bg-slate-700/50 hover:bg-pink-600 rounded-lg flex items-center justify-center transition-colors"
                     >
@@ -109,7 +111,9 @@ function ContributorsPage() {
                       </svg>
                     </motion.a>
                     <motion.a
-                      href="#"
+                      href="https://github.com/singharpita2503"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       whileHover={{ scale: 1.1 }}
                       className="w-10 h-10 bg-slate-700/50 hover:bg-pink-600 rounded-lg flex items-center justify-center transition-colors"
                     >
@@ -118,7 +122,9 @@ function ContributorsPage() {
                       </svg>
                     </motion.a>
                     <motion.a
-                      href="#"
+                      href="https://www.instagram.com/arpitassinghh/"
+                      target="_blank"
+                      rel="noopener noreferrer"
                       whileHover={{ scale: 1.1 }}
                       className="w-10 h-10 bg-slate-700/50 hover:bg-pink-600 rounded-lg flex items-center justify-center transition-colors"
                     >
@@ -127,7 +133,7 @@ function ContributorsPage() {
                       </svg>
                     </motion.a>
                     <motion.a
-                      href="mailto:arpita@example.com"
+                      href="mailto:singharpita2503@gmail.com"
                       whileHover={{ scale: 1.1 }}
                       className="w-10 h-10 bg-slate-700/50 hover:bg-pink-600 rounded-lg flex items-center justify-center transition-colors"
                     >

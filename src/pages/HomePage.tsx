@@ -448,8 +448,7 @@ function HomePage() {
               Explore <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500">Communique</span> Magazines
             </h2>
             <p className="text-xl text-slate-400 max-w-3xl mx-auto">
-              Dive into our collection of student-curated magazines featuring technical articles, 
-              innovation stories, project showcases, and insights from the ECE community
+              Dive into our collection of student-curated magazines featuring poems, arts,photography,branch cup,patents and insights from the ECE community
             </p>
           </motion.div>
 
@@ -533,7 +532,7 @@ function HomePage() {
                   </div>
                 </div>
                 <div className="p-5">
-                  <p className="text-slate-400 text-sm mb-4">Exploring the frontiers of technology with space-themed design, featuring cutting-edge projects and innovations.</p>
+                  <p className="text-slate-400 text-sm mb-4"> highlighting student-led innovations, cultural insights, and voices from the ECE community..</p>
                   <a 
                     href="/Magazine-25.pdf" 
                     target="_blank"
@@ -556,7 +555,7 @@ function HomePage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-center"
+            className="flex justify-center"
           >
             <Link to="/about">
               <button className="bg-gradient-to-r from-cyan-500 to-purple-600 text-white px-8 py-4 rounded-xl hover:from-cyan-600 hover:to-purple-700 transition-all transform hover:scale-105 shadow-lg shadow-cyan-500/30 hover:shadow-xl hover:shadow-cyan-500/40 font-semibold flex items-center gap-2">
