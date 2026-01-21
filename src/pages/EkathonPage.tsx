@@ -637,9 +637,6 @@ function EkathonPage() {
                     <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-orange-500/20 text-orange-400 rounded-full border border-orange-500/50">
                       ✓ Free Entry
                     </span>
-                    <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-red-500/20 text-red-400 rounded-full border border-red-500/50">
-                      ✓ Food Provided
-                    </span>
                     <span className="px-3 py-1.5 sm:px-4 sm:py-2 bg-purple-500/20 text-purple-400 rounded-full border border-purple-500/50">
                       ✓ Exciting Prizes
                     </span>
