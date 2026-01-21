@@ -58,6 +58,19 @@ function Navbar() {
               Events
             </Link>
             <Link 
+              to="/ekathon" 
+              className={`transition-colors font-medium ${
+                isActive('/ekathon') 
+                  ? 'text-orange-500' 
+                  : 'text-slate-300 hover:text-orange-500'
+              }`}
+            >
+              <span className="flex items-center gap-1">
+                <span className="animate-pulse">🎃</span>
+                Ekathon
+              </span>
+            </Link>
+            <Link 
               to="/achievements" 
               className={`transition-colors font-medium ${
                 isActive('/achievements') 
@@ -145,6 +158,20 @@ function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
             >
               Events
+            </Link>
+            <Link 
+              to="/ekathon" 
+              className={`block transition-colors font-medium py-2 ${
+                isActive('/ekathon') 
+                  ? 'text-orange-500' 
+                  : 'text-slate-300 hover:text-orange-500'
+              }`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              <span className="flex items-center gap-1">
+                <span className="animate-pulse">🎃</span>
+                Ekathon
+              </span>
             </Link>
             <Link 
               to="/achievements" 

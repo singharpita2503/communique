@@ -7,6 +7,7 @@ import Footer from './components/Footer'
 import Loader from './components/Loader'
 import HomePage from './pages/HomePage'
 import EventsPage from './pages/EventsPage'
+import EkathonPage from './pages/EkathonPage'
 import AchievementsPage from './pages/AchievementsPage'
 import FeedbackPage from './pages/FeedbackPage'
 import AboutPage from './pages/AboutPage'
@@ -36,6 +37,7 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/events" element={<EventsPage />} />
+              <Route path="/ekathon" element={<EkathonPage />} />
               <Route path="/achievements" element={<AchievementsPage />} />
               <Route path="/feedback" element={<FeedbackPage />} />
               <Route path="/about" element={<AboutPage />} />
