@@ -497,6 +497,65 @@ function EkathonPage() {
           </div>
         </section>
 
+        {/* Leaderboard Section */}
+        <section id="leaderboard" className="relative py-12 sm:py-16 md:py-24 px-4">
+          <div className="max-w-5xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-8 sm:mb-12 md:mb-16"
+            >
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold text-white mb-3 sm:mb-4 px-2">
+                <span className="text-orange-400">🏆</span> SELECTED <span className="text-red-500">TEAMS</span>
+              </h2>
+              <p className="text-slate-400 text-sm sm:text-base md:text-lg px-4">The chosen ones who will face the curse...</p>
+            </motion.div>
+
+            <div className="space-y-3 sm:space-y-4">
+              {[
+                'MechXDle',
+                'Team Soul',
+                'Aimers',
+                'lone wolf',
+                'team error 404',
+                'demolition',
+                'team dumb'
+              ].map((teamName, index) => (
+                <motion.div
+                  key={teamName}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="relative bg-slate-900/80 backdrop-blur-sm border-2 border-orange-500/30 rounded-xl sm:rounded-2xl p-4 sm:p-5 md:p-6 hover:border-orange-500/70 transition-all group"
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-4 sm:gap-6">
+                      <div className="flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-full bg-gradient-to-br from-orange-500/20 to-red-500/20 border-2 border-orange-500/50 flex items-center justify-center font-bold text-orange-400 text-lg sm:text-xl md:text-2xl group-hover:scale-110 transition-transform">
+                        {index + 1}
+                      </div>
+                      <div>
+                        <h3 className="text-white font-bold text-lg sm:text-xl md:text-2xl group-hover:text-orange-400 transition-colors">
+                          {teamName}
+                        </h3>
+                        <p className="text-slate-400 text-xs sm:text-sm mt-1">Selected Team</p>
+                      </div>
+                    </div>
+                    <div className="text-2xl sm:text-3xl md:text-4xl opacity-50 group-hover:opacity-100 transition-opacity">
+                      👻
+                    </div>
+                  </div>
+                  
+                  {/* Decorative corner */}
+                  <div className="absolute top-2 right-2 w-3 h-3 sm:w-4 sm:h-4 border-t-2 border-r-2 border-orange-500/30 group-hover:border-orange-500 transition-colors rounded-tr" />
+                  <div className="absolute bottom-2 left-2 w-3 h-3 sm:w-4 sm:h-4 border-b-2 border-l-2 border-orange-500/30 group-hover:border-orange-500 transition-colors rounded-bl" />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Registration Section */}
         <section id="register" className="relative py-12 sm:py-16 md:py-24 px-4">
           <div className="max-w-5xl mx-auto">
